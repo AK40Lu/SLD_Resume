@@ -18,6 +18,7 @@
       --header-bg: #2f2f2f;
       --footer-bg: #333;
       --tab-bg: #e0e0e0;
+      --active-tab: #0077cc;
     }
     [data-theme="dark"] {
       --bg-color: #1a1a1a;
@@ -26,6 +27,7 @@
       --header-bg: #121212;
       --footer-bg: #111;
       --tab-bg: #333;
+      --active-tab: #00aaff;
     }
     body {
       font-family: 'Inter', sans-serif;
@@ -39,8 +41,7 @@
       background: var(--header-bg);
       color: white;
       text-align: center;
-      padding: 3rem 1rem 6rem;
-      position: relative;
+      padding: 3rem 1rem;
     }
     header h1 {
       font-size: 2.5rem;
@@ -50,28 +51,6 @@
       font-weight: 400;
       font-size: 1.2rem;
       color: #ccc;
-    }
-    .hero-buttons, .theme-toggle {
-      display: flex;
-      gap: 0.5rem;
-      position: absolute;
-      top: 1.5rem;
-    }
-    .hero-buttons {
-      right: 1rem;
-    }
-    .theme-toggle {
-      left: 1rem;
-    }
-    .hero-buttons a, .theme-toggle button {
-      background: #444;
-      color: white;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      border: none;
-      cursor: pointer;
     }
     .tabs {
       display: flex;
@@ -83,6 +62,12 @@
       margin: 0 1rem;
       font-weight: 600;
       cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    .tab.active {
+      background-color: var(--active-tab);
+      color: white;
     }
     .content-pane {
       max-width: 800px;
@@ -100,8 +85,26 @@
       background: var(--footer-bg);
       color: white;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
+      padding: 2rem 1rem;
+      font-size: 0.95rem;
+    }
+    .footer-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .footer-buttons a,
+    .footer-buttons button {
+      background: #444;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
     }
     footer a {
       color: #ccc;
@@ -119,18 +122,12 @@
       body {
         font-size: 1.15rem;
       }
-      .hero-buttons, .theme-toggle {
-        position: static;
-        justify-content: center;
-        margin-top: 1rem;
-      }
     }
   </style>
 </head>
 <body>
 
 <header>
-   </div>
   <h1>Luis Velasquez | Product Owner</h1>
   <p>Building thoughtful tools that make complex work feel simple</p>
 </header>
@@ -140,7 +137,6 @@
   <div class="tab" data-target="cover">Cover Letter</div>
   <div class="tab" data-target="resume">Resume</div>
 </nav>
-
 
 <main>
   <div class="container">
@@ -208,15 +204,16 @@
 </main>
 
 <footer>
- <div class="theme-toggle">
-    <button id="toggle-theme">Toggle Dark Mode</button>
-  </div>
-  <div class="hero-buttons">
+  <div class="footer-buttons">
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
     <a href="resume.pdf" download>Download Resume</a>
     <a href="cover-letter.pdf" download>Download Cover Letter</a>
-  Connect with me:
-  <a href="mailto:lvelasqu12@gmail.com">Email</a> |
-  <a href="https://www.linkedin.com/in/luis-velasquez-b3b58016" target="_blank">LinkedIn</a>
+  </div>
+  <p>
+    Connect with me:
+    <a href="mailto:lvelasqu12@gmail.com">Email</a> |
+    <a href="https://www.linkedin.com/in/luis-velasquez-b3b58016" target="_blank">LinkedIn</a>
+  </p>
 </footer>
 
 <script>
@@ -226,11 +223,9 @@
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const target = tab.getAttribute('data-target');
-
       tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
       sections.forEach(section => section.classList.remove('active'));
+      tab.classList.add('active');
       document.getElementById(target).classList.add('active');
     });
   });
@@ -241,7 +236,6 @@
     html.setAttribute("data-theme", theme === "dark" ? "light" : "dark");
   }
 </script>
-
 
 </body>
 </html>
