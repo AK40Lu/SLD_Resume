@@ -1,217 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luis Velasquez | Product Owner</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Luis Velasquez is a digital product owner with a passion for building scalable, user-focused tools in geospatial, infrastructure, and data platforms.">
+  <meta property="og:title" content="Luis Velasquez | Product Owner" />
+  <meta property="og:description" content="Digital product leader blending strategy, user empathy, and engineering to deliver impactful tools." />
+  <meta property="og:image" content="preview.jpg" />
   <style>
     :root {
-      --main-bg: #f4f4f4;
-      --text-color: #2a2a2a;
-      --tab-accent: #555;
-      --header-color: #2e2e2e;
-      --light-gray: #e6e6e6;
-      --accent-gray: #ccc;
+      --bg-color: #f5f5f5;
+      --text-color: #222;
+      --section-bg: white;
+      --header-bg: #2f2f2f;
+      --footer-bg: #333;
+      --tab-bg: #e0e0e0;
     }
-
-    * {
-      box-sizing: border-box;
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #f0f0f0;
+      --section-bg: #2c2c2c;
+      --header-bg: #121212;
+      --footer-bg: #111;
+      --tab-bg: #333;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--main-bg);
+      background: var(--bg-color);
       color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-size: 1.05rem;
     }
-
     header {
-      background-color: var(--header-color);
-      padding: 2rem 1rem;
-      text-align: center;
+      background: var(--header-bg);
       color: white;
+      text-align: center;
+      padding: 3rem 1rem 6rem;
+      position: relative;
     }
-
     header h1 {
-      margin: 0;
       font-size: 2.5rem;
-      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
     }
-
-    nav {
+    header p {
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    .hero-buttons, .theme-toggle {
       display: flex;
-      justify-content: center;
-      background-color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      border-bottom: 2px solid var(--light-gray);
-      flex-wrap: wrap;
+      gap: 0.5rem;
+      position: absolute;
+      top: 1.5rem;
     }
-
-    nav button {
-      flex: 1;
-      padding: 1rem;
+    .hero-buttons {
+      right: 1rem;
+    }
+    .theme-toggle {
+      left: 1rem;
+    }
+    .hero-buttons a, .theme-toggle button {
+      background: #444;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
       border: none;
-      background: none;
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--tab-accent);
       cursor: pointer;
-      transition: background 0.2s;
-      min-width: 120px;
     }
-
-    nav button:hover,
-    nav button.active {
-      background-color: var(--light-gray);
-    }
-
-    main {
-      flex: 1;
+    .tabs {
       display: flex;
       justify-content: center;
-      padding: 2rem 1rem;
+      background: var(--tab-bg);
+      padding: 0.5rem;
     }
-
-    .container {
-      width: 100%;
-      max-width: 960px;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    .tab {
+      margin: 0 1rem;
+      font-weight: 600;
+      cursor: pointer;
     }
-
-    section {
+    .content-pane {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: var(--section-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       display: none;
     }
-
-    section.active {
+    .content-pane.active {
       display: block;
     }
-
-    .section-title {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      color: var(--header-color);
-    }
-
-    .job-title {
-      font-weight: bold;
-    }
-
-    .organization {
-      font-style: italic;
-    }
-
-    .date-range {
-      float: right;
+    footer {
+      background: var(--footer-bg);
+      color: white;
+      text-align: center;
+      padding: 2rem;
       font-size: 0.9rem;
-      color: #555;
     }
-
-    ul {
-      padding-left: 1.5rem;
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 0.5rem;
     }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.75rem;
+    @media (max-width: 640px) {
+      .tabs {
+        flex-direction: column;
+        align-items: center;
       }
-      nav button {
-        font-size: 0.9rem;
-        padding: 0.75rem;
+      .tab {
+        margin: 0.5rem 0;
+      }
+      body {
+        font-size: 1.15rem;
+      }
+      .hero-buttons, .theme-toggle {
+        position: static;
+        justify-content: center;
+        margin-top: 1rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Luis Velasquez | Product Owner</h1>
-  </header>
 
-  <nav>
-    <button class="tab active" onclick="switchTab(event, 'about')">About Me</button>
-    <button class="tab" onclick="switchTab(event, 'cover')">Cover Letter</button>
-    <button class="tab" onclick="switchTab(event, 'resume')">Resume</button>
-  </nav>
+<header>
+  <div class="theme-toggle">
+    <button id="toggle-theme">Toggle Dark Mode</button>
+  </div>
+  <div class="hero-buttons">
+    <a href="resume.pdf" download>Download Resume</a>
+    <a href="cover-letter.pdf" download>Download Cover Letter</a>
+  </div>
+  <h1>Luis Velasquez | Product Owner</h1>
+  <p>Building thoughtful tools that make complex work feel simple</p>
+</header>
 
-  <main>
-    <div class="container">
-      <section id="about" class="active">
-        <p>I’m Luis Velasquez — a digital product leader with an engineering background and a passion for building tools that make complex work feel simple. From geospatial platforms to internal automation frameworks, I focus on creating solutions that are clear, scalable, and genuinely useful to the people who rely on them.</p>
-        <p>Outside of work, I love building apps to explore new ideas (and teach my kids along the way), woodworking in the garage, and getting outside whenever I can. I’m a dad, a husband, and the guy who enjoys spending time at the whiteboard or the mountain bike trails — or both. We’ve got a couple of pets, a busy household, and a lot of projects in motion — which is just how we like it.</p>
-        <p>I’m looking for the next opportunity to bring thoughtful products to life — where I can collaborate with smart teams, solve meaningful problems, and grow as both a builder and a leader. I’m especially energized by roles that blend strategy, creativity, and user focus, whether that’s in infrastructure, tech, or something entirely new.
+<nav class="tabs">
+  <div class="tab" data-target="about">About Me</div>
+  <div class="tab" data-target="cover">Cover Letter</div>
+  <div class="tab" data-target="resume">Resume</div>
+</nav>
 
-If you’re curious about how I think and work, take a look at my cover letter and resume — and feel free to reach out. I’d love to connect.</p>
-      </section>
-      <section id="cover">
-        <h2 class="section-title">Cover Letter</h2>
-        <p>Dear Hiring Committee,</p>
-        <p>I'm excited to apply for the Product Owner position at StreetLight Data. With a background in transportation engineering, cross-sector collaboration, and user-centered digital solutions, I’m eager to bring my experience delivering geospatial tools and analytics platforms to an organization shaping the future of mobility.</p>
-        <p>In my current role as Product Owner for Smart Atlas, I’ve led the development of a browser-based geospatial viewer used by 1000+ staff across 18 countries. This solution improves access to spatial data without requiring advanced GIS tools, reducing project delivery timelines by up to 50%. I’ve translated user feedback into actionable product strategies, working closely with technical teams to deliver high-value mapping features—from drawing tools and print/export to 3D terrain and data layer integration.</p>
-        <p>Prior to this, I worked extensively with public sector transportation clients, including the Georgia Department of Transportation (GDOT), where I helped deliver statewide data programs, environmental modeling tools, and operational planning initiatives. Through these roles, I developed a deep appreciation for how data quality, workflows, and end-user needs shape real-world transportation decisions.</p>
-        <p>What excites me about StreetLight is your mission to turn complex mobility patterns into usable insights—and your focus on big data, mapping, and infrastructure impact. I’m especially drawn to the opportunity to serve as a bridge between stakeholders and technical teams, aligning sprints and backlogs with product vision and customer value. I bring strengths in Agile facilitation, GIS use-case evaluation, and cross-functional collaboration, along with a naturally curious and systems-oriented mindset.</p>
-        <p>I’d be honored to contribute to your team’s efforts to scale high-quality transportation data products that make cities and infrastructure more adaptive, efficient, and equitable. Thank you for considering my application—I’d welcome the opportunity to speak further.</p>
-        <p>Sincerely,<br>Luis Velasquez</p>
-      </section>
-      <section id="resume">
-        <h2 class="section-title">Resume</h2>
-        <p><strong>Objective:</strong> Product Owner with a background in engineering and a passion for solving complex, real-world problems through data-driven tools and workflows. I thrive on turning ambiguity into clarity—bridging technical teams and end users to design geospatial and analytics solutions that make a measurable impact. Naturally curious and collaborative, I enjoy ideating with cross-functional teams and guiding product development that delivers tangible value to end users.</p>
-        <h3>Skills & Abilities</h3>
-        <ul>
-          <li>Skilled at evaluating user workflows and identifying product metrics that drive feature adoption and long-term engagement</li>
-          <li>Familiar with geospatial tools and data formats (e.g., SHP, KML, GeoJSON), with a focus on how they support various end user workflows</li>
-          <li>Adept at communicating complex technical topics to both technical teams and non-technical stakeholders</li>
-          <li>Experienced facilitating Agile development processes, including backlog refinement, user story writing, and sprint planning</li>
-          <li>Comfortable operating in fast-paced, ambiguous environments, prioritizing user value while aligning technical delivery with business goals</li>
-          <li>Naturally curious and user-focused—driven to explore problems deeply and translate insights into actionable, user-centered product features</li>
-        </ul>
-        <h3>Experience</h3>
-        <p><strong>Product Owner – Smart Atlas</strong>, Arcadis, Global (2024 – Present)</p>
-        <ul>
-          <li>Led product ownership for a browser-based geospatial viewer used by 500+ staff</li>
-          <li>Defined and prioritized a GIS-focused backlog of user stories across map tools</li>
-          <li>Reduced project execution time by 30–50% through spatial standardization</li>
-        </ul>
-        <p><strong>Digital Portfolio Manager</strong>, Arcadis, Resilience Global Business Area (2023 – Present)</p>
-        <ul>
-          <li>Cut digital portfolio costs by 30% through strategic evaluations and sunsetting</li>
-          <li>Improved cybersecurity posture by removing medium- and high-risk tools</li>
-          <li>Positioned internal tools for business development and client delivery</li>
-        </ul>
-        <p><strong>Project Manager | GIS & Data Strategy</strong>, Georgia DOT (via Arcadis) (2019 – 2023)</p>
-        <ul>
-          <li>Led statewide GIS prioritization model that doubled federal funding access</li>
-          <li>Designed corridor data strategy for I-85 PEL study, reducing manual entry by 40%</li>
-          <li>Supported multi-agency purchasing model saving GDOT $5M annually</li>
-        </ul>
-        <p><strong>Transportation Engineer</strong>, Arcadis (2013 – 2020)</p>
-        <ul>
-          <li>Delivered environmental, data, and design work across Georgia infrastructure projects</li>
-          <li>Introduced impactful technology and tools for public engagement and field data collection</li>
-        </ul>
-        <h3>Education & Certifications</h3>
-        <p><strong>Bachelor of Science in Civil Engineering Technology</strong><br>Southern Polytechnic State University (now KSU), 2008 – 2012</p>
-        <p><strong>Certifications:</strong> PE (PA, GA) · PSPO I</p>
-      </section>
-    </div>
-  </main>
+<main>
+  <div class="container">
+    <section id="about" class="content-pane active">
+      <p>I’m Luis Velasquez — a digital product leader with an engineering background and a passion for building tools that make complex work feel simple. From geospatial platforms to internal automation frameworks, I focus on creating solutions that are clear, scalable, and genuinely useful to the people who rely on them.</p>
+      <p>Outside of work, I love building apps to explore new ideas (and teach my kids along the way), woodworking in the garage, and getting outside whenever I can. I’m a dad, a husband, and the guy who enjoys spending time at the whiteboard or the mountain bike trails — or both. We’ve got a couple of pets, a busy household, and a lot of projects in motion — which is just how we like it.</p>
+      <p>I’m looking for the next opportunity to bring thoughtful products to life — where I can collaborate with smart teams, solve meaningful problems, and grow as both a builder and a leader. I’m especially energized by roles that blend strategy, creativity, and user focus, whether that’s in infrastructure, tech, or something entirely new. If you’re curious about how I think and work, take a look at my cover letter and resume — and feel free to reach out. I’d love to connect.</p>
+    </section>
 
-  <script>
-    function switchTab(event, tabId) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+    <section id="cover" class="content-pane">
+      <h2 class="section-title">Cover Letter</h2>
+      <p>Dear Hiring Committee,</p>
+      <p>I'm excited to apply for the Product Owner position at StreetLight Data. With a background in transportation engineering, cross-sector collaboration, and user-centered digital solutions, I’m eager to bring my experience delivering geospatial tools and analytics platforms to an organization shaping the future of mobility.</p>
+      <p>In my current role as Product Owner for Smart Atlas, I’ve led the development of a browser-based geospatial viewer used by 1000+ staff across 18 countries. This solution improves access to spatial data without requiring advanced GIS tools, reducing project delivery timelines by up to 50%. I’ve translated user feedback into actionable product strategies, working closely with technical teams to deliver high-value mapping features—from drawing tools and print/export to 3D terrain and data layer integration.</p>
+      <p>Prior to this, I worked extensively with public sector transportation clients, including the Georgia Department of Transportation (GDOT), where I helped deliver statewide data programs, environmental modeling tools, and operational planning initiatives. Through these roles, I developed a deep appreciation for how data quality, workflows, and end-user needs shape real-world transportation decisions.</p>
+      <p>What excites me about StreetLight is your mission to turn complex mobility patterns into usable insights—and your focus on big data, mapping, and infrastructure impact. I’m especially drawn to the opportunity to serve as a bridge between stakeholders and technical teams, aligning sprints and backlogs with product vision and customer value. I bring strengths in Agile facilitation, GIS use-case evaluation, and cross-functional collaboration, along with a naturally curious and systems-oriented mindset.</p>
+      <p>I’d be honored to contribute to your team’s efforts to scale high-quality transportation data products that make cities and infrastructure more adaptive, efficient, and equitable. Thank you for considering my application—I’d welcome the opportunity to speak further.</p>
+      <p>Sincerely,<br>Luis Velasquez</p>
+    </section>
+
+    <section id="resume" class="content-pane">
+      <h2 class="section-title">Resume</h2>
+      <p><strong>Objective:</strong> Product Owner with a background in engineering and a passion for solving complex, real-world problems through data-driven tools and workflows. I thrive on turning ambiguity into clarity—bridging technical teams and end users to design geospatial and analytics solutions that make a measurable impact. Naturally curious and collaborative, I enjoy ideating with cross-functional teams and guiding product development that delivers tangible value to end users.</p>
+
+      <h3>Skills & Abilities</h3>
+      <ul>
+        <li>Skilled at evaluating user workflows and identifying product metrics that drive feature adoption and long-term engagement</li>
+        <li>Familiar with geospatial tools and data formats (e.g., SHP, KML, GeoJSON)</li>
+        <li>Adept at communicating complex technical topics to both technical teams and non-technical stakeholders</li>
+        <li>Experienced facilitating Agile development processes</li>
+        <li>Comfortable operating in fast-paced, ambiguous environments</li>
+        <li>Naturally curious and user-focused</li>
+      </ul>
+
+      <h3>Experience</h3>
+      <p><strong>Product Owner – Smart Atlas</strong>, Arcadis, Global (2024 – Present)</p>
+      <ul>
+        <li>Led product ownership for a browser-based geospatial viewer used by 1000+ staff</li>
+        <li>Reduced project execution time by 30–50% through spatial standardization</li>
+      </ul>
+
+      <p><strong>Digital Portfolio Manager</strong>, Arcadis (2023 – Present)</p>
+      <ul>
+        <li>Cut digital portfolio costs by 30%</li>
+        <li>Improved cybersecurity posture by removing high-risk tools</li>
+      </ul>
+
+      <p><strong>Project Manager | GIS & Data Strategy</strong>, Georgia DOT (2019 – 2023)</p>
+      <ul>
+        <li>Doubled federal funding access with GIS prioritization model</li>
+        <li>Reduced manual entry by 40% for I-85 corridor strategy</li>
+      </ul>
+
+      <p><strong>Transportation Engineer</strong>, Arcadis (2013 – 2020)</p>
+      <ul>
+        <li>Delivered environmental and infrastructure design across GA</li>
+        <li>Led public engagement and data collection initiatives</li>
+      </ul>
+
+      <h3>Education & Certifications</h3>
+      <p><strong>Bachelor of Science in Civil Engineering Technology</strong><br>Southern Polytechnic State University (now KSU), 2008 – 2012</p>
+      <p><strong>Certifications:</strong> PE (PA, GA), PSPO I</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  Connect with me:
+  <a href="mailto:lvelasqu12@gmail.com">Email</a> |
+  <a href="https://www.linkedin.com/in/luis-velasquez-b3b58016" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+  document.getElementById('toggle-theme').addEventListener('click', () => {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  });
+
+  const tabs = document.querySelectorAll('.tab');
+  const panes = document.querySelectorAll('.content-pane');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-target');
+      panes.forEach(p => p.classList.remove('active'));
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+
 </body>
-
 </html>
