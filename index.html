@@ -142,10 +142,11 @@
 </header>
 
 <nav class="tabs">
-  <div class="tab" data-target="about">About Me</div>
+  <div class="tab active" data-target="about">About Me</div>
   <div class="tab" data-target="cover">Cover Letter</div>
   <div class="tab" data-target="resume">Resume</div>
 </nav>
+
 
 <main>
   <div class="container">
@@ -219,23 +220,28 @@
 </footer>
 
 <script>
-  document.getElementById('toggle-theme').addEventListener('click', () => {
-    const root = document.documentElement;
-    const current = root.getAttribute('data-theme');
-    root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-  });
-
   const tabs = document.querySelectorAll('.tab');
-  const panes = document.querySelectorAll('.content-pane');
+  const sections = document.querySelectorAll('.content-pane');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const targetId = tab.getAttribute('data-target');
-      panes.forEach(p => p.classList.remove('active'));
-      document.getElementById(targetId).classList.add('active');
+      const target = tab.getAttribute('data-target');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(target).classList.add('active');
     });
   });
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const theme = html.getAttribute("data-theme");
+    html.setAttribute("data-theme", theme === "dark" ? "light" : "dark");
+  }
 </script>
+
 
 </body>
 </html>
